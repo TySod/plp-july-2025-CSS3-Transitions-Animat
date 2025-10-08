@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic UI Assignment</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>🎬 Bringing Web Pages to Life</h1>
+        <p>Combining CSS transitions, Keyframe animations, and JavaScript functions.</p>
+    </header>
+
+    <!-- --- Part 2: JS Function Output Area --- -->
+    <section class="js-output-section">
+        <h2>📚 Part 2: JavaScript Functions in Action</h2>
+        <p>This demonstrates function reusability and parameters:</p>
+        <p>Calculated Total: <span id="total-output">...</span></p>
+        <p>Scope Check: <span id="scope-output">...</span></p>
+    </section>
+
+    <!-- --- Part 3: Combining CSS & JS (Interactive Card Flip) --- -->
+    <section class="card-flip-section">
+        <h2>🎨🎬 Part 3: CSS & JS Integration (3D Card Flip)</h2>
+        <button id="flip-button" class="action-btn">Flip Card</button>
+        
+        <!-- The Card Structure -->
+        <div id="interactive-card" class="card-container">
+            <div class="card-face card-front">
+                <h3>Front Face</h3>
+                <p>Click the button to reveal the hidden information on the back.</p>
+                <p class="hint">(Hint: This side also has a CSS transition on hover!)</p>
+            </div>
+            <div class="card-face card-back">
+                <h3>Back Face</h3>
+                <p>This side was shown by a **JavaScript function** adding the **'flipped' class** which triggers the **CSS 3D transform animation**.</p>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

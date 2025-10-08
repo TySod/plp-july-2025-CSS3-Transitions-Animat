@@ -1,0 +1,125 @@
+/* General Styling & Variables */
+:root {
+    --primary-color: #4f46e5;
+    --secondary-color: #818cf8;
+    --text-color: #1f2937;
+    --bg-color: #f3f4f6;
+    --card-size: 300px;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    padding: 40px;
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    color: var(--primary-color);
+}
+
+section {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Part 1: CSS3 Transitions and Animations --- */
+
+/* 1. Button Hover Transition (A simple transition effect) */
+.action-btn {
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    /* Transition applied to multiple properties for smooth hover effect */
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.action-btn:hover {
+    background-color: var(--secondary-color);
+    /* Subtle scale effect */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* 2. Keyframe Animation (Continuous, time-based effect) */
+@keyframes pulseGlow {
+    0% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(79, 70, 229, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0); }
+}
+
+.card-flip-section .action-btn {
+    margin-bottom: 20px;
+    /* Apply the keyframe animation */
+    animation: pulseGlow 2s infinite;
+}
+
+/* --- Part 3: 3D Card Flip Setup (JS triggered) --- */
+
+.card-container {
+    width: var(--card-size);
+    height: var(--card-size);
+    position: relative;
+    margin: 20px auto;
+    /* CRITICAL: Establishes a 3D context for the children */
+    perspective: 1000px;
+}
+
+.card-face {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    /* Use transition for the rotation effect */
+    transition: transform 0.6s ease;
+    /* Hides the back of the element when facing away from the user */
+    backface-visibility: hidden;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-front {
+    background-color: #ffffff;
+    border: 3px solid var(--primary-color);
+    z-index: 2;
+    /* Part 1 Bonus: Transition on hover for the card itself */
+    transition: transform 0.6s ease, background-color 0.3s ease;
+}
+
+.card-front:hover {
+    /* Slight lift on hover */
+    transform: translateY(-5px); 
+    background-color: #fafafa;
+}
+
+.card-back {
+    background-color: var(--primary-color);
+    color: white;
+    /* Start the back face rotated 180 degrees so it's hidden */
+    transform: rotateY(180deg);
+}
+
+/* JS-TRIGGERED CLASS: This is the class added by JavaScript to start the flip */
+.flipped .card-front {
+    /* Rotate the front face 180 degrees away */
+    transform: rotateY(-180deg);
+}
+
+.flipped .card-back {
+    /* Rotate the back face back to 0 degrees (visible) */
+    transform: rotateY(0deg);
+}
